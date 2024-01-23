@@ -1,7 +1,7 @@
 <!DOCTYPE html>  
 <html>  
   <head>  
-    <meta charset="GBK">  
+    <meta charset="UTF-8">  
 	<script language="javascript">     
 	function exec1(command) 
 	{     
@@ -13,24 +13,35 @@
   
 <body>
 	<div id="header">
-	<h1>ÔËĞĞpython</h1>
+	<h1>è¿è¡Œpython</h1>
 	</div>
  
-	<div id="nav1">
-		Ö´ĞĞtest1³ÌĞò£¨·½Ê½1£©
-        <!-- <button onclick="exec1('python -i test2.py')">ÔËĞĞ python</button> -->
-        <button onclick="exec1('python F:\\Users\\Djctionary\\Desktop\\HACI_Lab\\TCM_UI\\Code\\Audio2Words\\Audio2Words.py')">ÔËĞĞ python</button>
-	</div>
-    
-	<div id="nav2">
-		Ö´ĞĞtest2³ÌĞò£¨·½Ê½2£©
-        <input type="button" value="ÔËĞĞ python" onclick="exec1('python -i test2.py')" />
-	</div>
-	<button onclick="readFileAndDisplay()">¶ÁÈ¡ÎÄ¼ş</button>
+	<button id="runButton">è¿è¡Œpythonè„šæœ¬</button>
+
+
+
+	<button onclick="readFileAndDisplay()">è¯»å–æ–‡ä»¶</button>
 
 	<textarea id="outputTextarea" rows="10" cols="50"></textarea>
 	
 </body> 
+
+<script>
+  document.getElementById('runButton').addEventListener('click', function() {
+      // å‘é€ POST è¯·æ±‚åˆ° Flask æœåŠ¡å™¨çš„ /run_python_script è·¯ç”±
+      fetch('/run_python_script', { method: 'POST' })
+          .then(response => response.text())
+          .then(result => {
+              console.log(result);
+              // å¤„ç†æˆåŠŸæˆ–é”™è¯¯çš„æƒ…å†µ
+              alert(result === 'Success' ? 'Python è„šæœ¬è¿è¡ŒæˆåŠŸ' : 'Python è„šæœ¬è¿è¡Œå¤±è´¥');
+          })
+          .catch(error => {
+              console.error('Error:', error);
+              alert('å‘ç”Ÿé”™è¯¯ï¼Œè¯·æ£€æŸ¥æ§åˆ¶å°');
+          });
+  });
+</script>
 
 <script>
     function readFileAndDisplay() {
@@ -40,11 +51,11 @@
             var fileContent = file.ReadAll();
             file.Close();
 
-            // ½«ÎÄ¼şÄÚÈİÏÔÊ¾ÔÚÎÄ±¾¿òÖĞ
+            // å°†æ–‡ä»¶å†…å®¹æ˜¾ç¤ºåœ¨æ–‡æœ¬æ¡†ä¸­
             var outputTextarea = document.getElementById('outputTextarea');
             outputTextarea.value = fileContent;
         } catch (error) {
-            // ²¶»ñÒì³££¬ÏÔÊ¾´íÎóĞÅÏ¢
+            // æ•è·å¼‚å¸¸ï¼Œæ˜¾ç¤ºé”™è¯¯ä¿¡æ¯
             alert('Error reading file: ' + error.message);
         }
     }

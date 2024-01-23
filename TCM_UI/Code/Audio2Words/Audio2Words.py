@@ -40,8 +40,26 @@ suid = ''
 
 class Video2Audio:
     def __init__(self, video_path, audio_path):
-        self.video_path = video_path
+        self.video_path = self.find_latest_recorded_video(video_path)
         self.output_audio_path = audio_path
+
+    def find_latest_recorded_video(self, directory):
+        base_filename = "recorded_video.mp4"
+        file_pattern = re.compile(r'^recorded_video \((\d+)\)\.mp4$')
+
+        # 获取目录下所有文件
+        files = os.listdir(directory)
+
+        # 筛选出所有符合文件格式的文件
+        matching_files = [file for file in files if file_pattern.match(file)]
+
+        if not matching_files:
+            return None  # 如果没有匹配的文件，返回 None
+
+        # 根据文件名中的编号排序，找到最大编号的文件
+        latest_file = max(matching_files, key=lambda x: int(file_pattern.match(x).group(1)))
+
+        return os.path.join(directory, latest_file)
 
     def get_unique_output_path(self, output_path):
         base_dir = os.path.dirname(output_path)
@@ -210,7 +228,7 @@ class RequestApi(object):
             print("提取失败")
 
         # 将结果保存到文件
-        with open('F:/Users/Djctionary/Desktop/HACI_Lab/TCM_UI/output/Words/result.txt', 'w', encoding='GBK') as f:
+        with open('/Users/zhangqi/TCM_UI/TCM_UI/output/Words/result.txt', 'w', encoding='GBK') as f:
             f.write(json.dumps(chinese_text, indent=2, ensure_ascii=False))
 
         return result
@@ -271,8 +289,9 @@ class RequestApi(object):
 if __name__ == '__main__':
     APP_ID = "a56c69d7"
     SECRET_KEY = "50aea5d0158b38e7ad644c1f28f99689"
-    video_path = r"F:\Users\Djctionary\Desktop\HACI_Lab\TCM_UI\input\ch.mp4"
-    output_audio_path = r"F:\Users\Djctionary\Desktop\HACI_Lab\TCM_UI\output\Audio\audio.wav"
+    video_path = "/Users/zhangqi/TCM_UI/TCM_UI/input"
+    output_audio_path = "/Users/zhangqi/TCM_UI/TCM_UI/output/Audio/audio.wav"
+
     video2audio = Video2Audio(video_path,output_audio_path)
     file_path = video2audio.convert_video_to_audio()
     #file_path = r"lfasr_涉政.wav"
