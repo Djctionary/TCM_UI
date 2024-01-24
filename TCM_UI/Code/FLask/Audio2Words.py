@@ -228,7 +228,7 @@ class RequestApi(object):
             print("提取失败")
 
         # 将结果保存到文件
-        with open('/Users/zhangqi/TCM_UI/TCM_UI/output/Words/result.txt', 'w', encoding='GBK') as f:
+        with open('/Users/zhangqi/TCM_UI/TCM_UI/output/Words/result.txt', 'w', encoding='utf-8') as f:
             f.write(json.dumps(chinese_text, indent=2, ensure_ascii=False))
 
         return result
