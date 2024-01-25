@@ -29,6 +29,7 @@
 
     <br>
 
+    <label id="currentKind" style="white-space: pre;">currentKind</label>
     <div class="record-grid">
 
         <div class="video-container">
@@ -49,10 +50,29 @@
 
 
     <script>
-        var urlParams = new URLSearchParams(window.location.search);
-        var sourceValue = urlParams.get('source');
-        
-        
+        document.addEventListener('DOMContentLoaded', function () {
+            var urlParams = new URLSearchParams(window.location.search);
+            var sourceValue = urlParams.get('source');
+            headline = document.getElementById("currentKind");
+            // 从后往前找到第一个连字符 "-"
+            var index = sourceValue.lastIndexOf("_");
+
+            if (index !== -1) {
+                // 拆分文本成两个部分
+                var id = sourceValue.substring(0, index);
+                var category = sourceValue.substring(index + 1);
+                // 打印结果（你可以根据需要修改这里的操作）
+                console.log("ID: " + id);
+                console.log("Category: " + category);
+                // 打印结果（你可以根据需要修改这里的操作）
+                var Head = "ID: " + id + "     种类: " + category;
+                headline.textContent = Head;
+            } else {
+                // 如果没有找到连字符，可以进行相应的处理
+                console.log("未找到连字符");
+            }
+        });
+
         let mediaRecorder;
         let recordedChunks = [];
         let recordedTime = 0;

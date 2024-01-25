@@ -9,9 +9,12 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333; /* 设置背景颜色 */
-    color: #fff; /* 设置文字颜色 */
-    padding: 10px; /* 设置内边距 */
+    background-color: #333;
+    /* 设置背景颜色 */
+    color: #fff;
+    /* 设置文字颜色 */
+    padding: 10px;
+    /* 设置内边距 */
 }
 
 /* 视频容器样式 */
@@ -20,28 +23,45 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* 100%视窗高度 */
+    height: 95vh;
+    /* 100%视窗高度 */
 }
 
 /* 实时画面样式 */
 .live-video {
-    width: 100%; /* 宽度100% */
-    height: 50vh; /* 50%视窗高度 */
-    background-color: #ddd; /* 设置背景颜色 */
+    width: 100%;
+    /* 宽度100% */
+    height: 50vh;
+    /* 50%视窗高度 */
+    background-color: #ddd;
+    /* 设置背景颜色 */
 }
 
 /* 播放画面样式 */
 .playback-video {
-    width: 100%; /* 宽度100% */
-    height: 50vh; /* 50%视窗高度 */
-    background-color: #ccc; /* 设置背景颜色 */
+    width: 100%;
+    /* 宽度100% */
+    height: 50vh;
+    /* 50%视窗高度 */
+    background-color: #ccc;
+    /* 设置背景颜色 */
 }
 
 /* 添加其他样式和属性根据需要 */
 
 
-/* Label 标签的样式 */
+/* playLabel 标签的样式 */
 #playLabel {
-    position: absolute; /* 设置绝对定位 */
+    position: absolute;
+    /* 设置绝对定位 */
     right: 12vh;
+}
+
+#currentKind {
+    display: flex;
+    font-size: 1.5em;
+    /* Adjust the font size as needed */
+    font-weight: bold;
+    font-family: 'Arial', sans-serif;
+    justify-content: center;
 }
