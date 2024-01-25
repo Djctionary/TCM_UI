@@ -1,0 +1,47 @@
+/* 全局样式 */
+body {
+    margin: 0;
+    padding: 0;
+}
+
+/* 顶部按钮和标签样式 */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333; /* 设置背景颜色 */
+    color: #fff; /* 设置文字颜色 */
+    padding: 10px; /* 设置内边距 */
+}
+
+/* 视频容器样式 */
+.video-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* 100%视窗高度 */
+}
+
+/* 实时画面样式 */
+.live-video {
+    width: 100%; /* 宽度100% */
+    height: 50vh; /* 50%视窗高度 */
+    background-color: #ddd; /* 设置背景颜色 */
+}
+
+/* 播放画面样式 */
+.playback-video {
+    width: 100%; /* 宽度100% */
+    height: 50vh; /* 50%视窗高度 */
+    background-color: #ccc; /* 设置背景颜色 */
+}
+
+/* 添加其他样式和属性根据需要 */
+
+
+/* Label 标签的样式 */
+#playLabel {
+    position: absolute; /* 设置绝对定位 */
+    right: 12vh;
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Directory Picker</title>
+</head>
+<body>
+
+<button id="openDirectoryButton" onclick="openDirectoryPickerOnDesktop()">Open Directory Picker</button>
+
+<script>
+    async function openDirectoryPickerOnDesktop() {
+        try {
+            // 打开目录选择器，默认在桌面
+            const directoryHandle = await showDirectoryPicker({ startIn: "downloads" });
+
+            // 使用选择的目录句柄
+            console.log(directoryHandle);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+</script>
+
+</body>
+</html>

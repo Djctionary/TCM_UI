@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+    <div class="angry-grid">
+        <script id="canvas_nest" defer="defer" color="255,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false"
+            src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script>
+        <script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js"
+            data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false"
+            async="async"></script>
+        <div id="ID" class="ID">
+            <p>ID</p>
+            &nbsp;&nbsp;
+            <input type="text">
+        </div>
+
+
+        <div id="面部识别" class="面部识别" style="display: flex; flex-direction: column; height: 100%;">
+            <a href="record.html?source=面部识别"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; flex: 1;">
+                <p>面部识别</p>
+            </a>
+            <a href="record.html?source=面部识别"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1;">
+                <img src="icon.png" alt="开始录制"
+                    style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+            </a>
+        </div>
+
+
+
+
+
+
+        <div id="舌相抓取" class="舌相抓取" style="display: flex; flex-direction: column; height: 100%;">
+            <a href="record.html?source=舌相抓取"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; flex: 1;">
+                <p>舌相抓取</p>
+            </a>
+            <a href="record.html?source=舌相抓取"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1;">
+                <img src="icon.png" alt="开始录制"
+                    style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+            </a>
+        </div>
+        <div id="步态记录" class="步态记录" style="display: flex; flex-direction: column; height: 100%;">
+            <a href="record.html?source=步态记录"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; flex: 1;">
+                <p>步态记录</p>
+            </a>
+            <a href="record.html?source=步态记录"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1;">
+                <img src="icon.png" alt="开始录制"
+                    style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+            </a>
+        </div>
+        <div id="患者自述" class="患者自述" style="display: flex; flex-direction: column; height: 100%;">
+            <a href="record.html?source=患者自述"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; flex: 1;">
+                <p>患者自述</p>
+            </a>
+            <a href="record.html?source=患者自述"
+                style="text-decoration: none; color: inherit; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; flex: 1;">
+                <img src="icon.png" alt="开始录制"
+                    style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+            </a>
+        </div>
+        <!-- <div id="文字转录" class="结果记录">
+            <p>文字转录</p>
+        </div> -->
+        <button class="文字转录">
+            文字转录
+        </button>
+        <div id="结果记录" class="结果记录">
+            <p>结果记录</p>
+
+        </div>
+        <div id="问卷1" class="问卷1">
+            <p>问卷1</p>
+        </div>
+        <div id="问卷2" class="问卷2">
+            <p>问卷2</p>
+        </div>
+        <div id="问卷3" class="问卷3">
+            <p>问卷3</p>
+        </div>
+
+        <div id="保存" class="保存">
+            保存
+        </div>
+        <div id="重置" class="重置">
+            重置
+        </div>
+        <div class="g-progress" style="--progress: 0%" id="bar"></div>
+    </div>
+
+    <script src="main.js"></script>
+
+    <!-- <script>
+    var bar = document.getElementById("bar");
+    
+    function updateProgress(i) {
+        bar.style.setProperty("--progress", i * 10 + "%");
+        }
+
+        for (var i = 1; i <= 10; i++) {
+            setTimeout(function () {
+                updateProgress(i);
+            }, i * 1000);
+        }
+
+        // var xhr = new XMLHttpRequest();
+        // xhr.open('HEAD',"result",false);
+        // xhr.send();
+        // if(xhr.status == 200) {
+        //     alert("存在")
+        // }
+        // else {
+        //     alert("不存在")
+        // }
+        
+        
+        
+        function redirect(source) {
+            var target = "record.html?source=" + source;
+
+            window.location.href = target;
+        }
+
+        // 获取面部识别元素
+        var faceRecognition = document.getElementById("面部识别");
+
+        // 点击事件处理函数
+        function handleClick() {
+            // 移除可能已有的 animate 类
+            faceRecognition.classList.remove("animate");
+
+            // 设置鼠标样式为手型   
+            faceRecognition.style.cursor = "pointer";
+
+            // 触发超链接跳转
+            window.location.href = "record.html?source=面部识别";
+        }
+
+        // 为面部识别元素添加点击事件监听器
+        faceRecognition.addEventListener("click", handleClick);
+
+    </script>
+     -->
+</body>
+
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>另存为</title>
+</head>
+
+<body>
+    <button id="button">另存为</button>
+</body>
+<script>
+    // 加载文件
+    const loadingFile = (path = '') => {
+        const params = {
+            headers: { 'Content-Type': 'application/json' },
+            responseType: 'blob'
+        }
+        return fetch(path, params)
+    }
+
+    // MIME类型
+    const MIME_MAP = new Map([
+        ['.docx', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+    ])
+
+    // blob转ArrayBuffer
+    const blobToArrayBuffer = (blob) => {
+        return new Promise((resolve, reject) => {
+            let reader = new FileReader()
+            reader.addEventListener('load', () => resolve(reader.result))
+            reader.addEventListener('error', () => reject(`文件转化失败！`))
+            reader.readAsArrayBuffer(blob)
+        })
+    }
+
+    // 文件地址
+    const filePath = `http://localhost:5500/1.docx`
+
+    window.addEventListener('load', () => {
+        const button = document.querySelector('#button')
+        button.addEventListener('click', () => {
+            loadingFile(filePath)
+                .then((response) => {
+                    // 取出文件
+                    return response.blob()
+                }).then((blob) => {
+                    // 类型转化
+                    return blobToArrayBuffer(blob)
+                }).then(async (buffer) => {
+                    const fileType = '.docx'
+                    const options = {
+                        // 默认另存文件名
+                        suggestedName: '测试文件',
+                        types: [
+                            {
+                                description: 'docx',
+                                accept: { [MIME_MAP.get(fileType)]: [fileType] }
+                            }
+                        ]
+                    }
+                    const fileHandle = await showSaveFilePicker(options)
+                    const writable = await fileHandle.createWritable()
+                    await writable.write(buffer)
+                    await writable.close()
+                }).catch((error) => {
+                    console.log(error)
+                })
+        })
+    })
+</script>
+
+</html>

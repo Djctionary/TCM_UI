@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Directory Example</title>
+</head>
+
+<body>
+    <button id="createDirectoryButton" onclick="createDirectory()">Create Directory</button>
+
+    <a href="https://www.python100.com/path/to/download/file" download="hello.html">hhh</a>
+    <script>
+        async function createDirectory() {
+            const currentDirHandle = await showDirectoryPicker();
+            // const currentDirHandle = await navigator.storage.getDirectory();
+
+            const dirName = "directoryToGetName";
+
+            // 假设我们有一个目录句柄：'currentDirHandle'
+            const subDir = currentDirHandle.getDirectoryHandle(dirName, { create: true });
+
+        }
+
+        // downloadFile("https://www.python100.com/path/to/download/file","Users/zhangqi/Desktop")
+        // function downloadFile(url, directory) {
+        //     var link = document.createElement('a');
+        //     link.href = url;
+        //     link.download = '';
+        //     link.onclick = function () {
+        //         // Set download directory
+        //         this.href = this.href.replace(/^data:application\/octet-stream/, 'data:application/octet-stream;header=Set-Cookie: fileDownload=true; path=/' + directory);
+        //     };
+        //     link.click();
+        // }
+
+    </script>
+
+    </script>
+</body>
+
+</html>
