@@ -49,6 +49,10 @@
 
 
     <script>
+        var urlParams = new URLSearchParams(window.location.search);
+        var sourceValue = urlParams.get('source');
+        
+        
         let mediaRecorder;
         let recordedChunks = [];
         let recordedTime = 0;
@@ -105,23 +109,19 @@
             }
         }
 
-        async function saveRecording() {
+        function saveRecording() {
             if (recordedBlob) {
-                try {
-                    // 获取用户选择的目录句柄
-                    const directoryHandle = await showDirectoryPicker({startIn: "desktop"});
-
-                    // 创建一个文件句柄并写入视频数据
-                    const fileHandle = await directoryHandle.getFileHandle('recorded_video.mp4', { create: true });
-                    const writable = await fileHandle.createWritable();
-                    await writable.write(recordedBlob);
-                    await writable.close();
-                } catch (error) {
-                    console.error(error);
-                }
+                const url = URL.createObjectURL(recordedBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                var urlParams = new URLSearchParams(window.location.search);
+                var sourceValue = urlParams.get('source');
+                a.download = sourceValue + '.mp4'; // 设置下载的文件名为 mp4 格式
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
             }
         }
-
 
         function playRecording() {
             if (recordedBlob) {
