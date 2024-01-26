@@ -15,6 +15,8 @@ body {
     /* 设置文字颜色 */
     padding: 10px;
     /* 设置内边距 */
+    
+    /* -webkit-box-reflect: below 0px linear-gradient(transparent, rgba(0, 0, 0, 0.4)); */
 }
 
 /* 视频容器样式 */
@@ -51,11 +53,11 @@ body {
 
 
 /* playLabel 标签的样式 */
-#playLabel {
+/* 设置绝对定位 */
+/* #playLabel {
     position: absolute;
-    /* 设置绝对定位 */
     right: 12vh;
-}
+} */
 
 #currentKind {
     display: flex;
@@ -64,4 +66,66 @@ body {
     font-weight: bold;
     font-family: 'Arial', sans-serif;
     justify-content: center;
+}
+
+.btn {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 1em;
+    padding: 0.5em 2em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #68bcde;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(104, 188, 222, 0.5);
+    cursor: pointer;
+    /* -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, 0.4)); */
+}
+
+.btn:focus {
+    outline: 0;
+}
+
+.btn:before,
+.bnt:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+}
+
+.btn:before {
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+
+.btn:after {
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+
+.btn:active {
+    transform: scale(0.9);
+    background-color: #e60074;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
 }

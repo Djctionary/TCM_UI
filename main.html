@@ -22,23 +22,21 @@
         </div>
 
 
-        <div id="面部识别" class="面部识别" style="display: flex; flex-direction: column; height: 100%;">
-            <p>面部识别</p>
-            <img src="icon.png" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        <div id="面部识别" class="面部识别" id>
+            <p class="video_title">面部识别</p>
+            <img class="icon" src="icon.png" alt="开始录制">
         </div>
-        <div id="舌相抓取" class="舌相抓取" style="display: flex; flex-direction: column; height: 100%;">
-
-            <p>舌相抓取</p>
-            <img src="icon.png" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        <div id="舌相抓取" class="舌相抓取">
+            <p class="video_title">舌相抓取</p>
+            <img class="icon" src="icon.png" alt="开始录制">
         </div>
-        <div id="步态记录" class="步态记录" style="display: flex; flex-direction: column; height: 100%;">
-            <p>步态记录</p>
-            <img src="icon.png" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        <div id="步态记录" class="步态记录">
+            <p class="video_title">步态记录</p>
+            <img class="icon" src="icon.png" alt="开始录制">
         </div>
-        <div id="患者自述" class="患者自述" style="display: flex; flex-direction: column; height: 100%;">
-
-            <p>患者自述</p>
-            <img src="icon.png" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        <div id="患者自述" class="患者自述">
+            <p class="video_title">患者自述</p>
+            <img class="icon" src="icon.png" alt="开始录制">
         </div>
         
         <!-- <div id="文字转录" class="结果记录">
@@ -70,58 +68,7 @@
     </div>
 
     <script src="main.js"></script>
-
-    <!-- <script>
-    var bar = document.getElementById("bar");
     
-    function updateProgress(i) {
-        bar.style.setProperty("--progress", i * 10 + "%");
-        }
-
-        for (var i = 1; i <= 10; i++) {
-            setTimeout(function () {
-                updateProgress(i);
-            }, i * 1000);
-        }
-
-        // var xhr = new XMLHttpRequest();
-        // xhr.open('HEAD',"result",false);
-        // xhr.send();
-        // if(xhr.status == 200) {
-        //     alert("存在")
-        // }
-        // else {
-        //     alert("不存在")
-        // }
-        
-        
-        
-        function redirect(source) {
-            var target = "record.html?source=" + source;
-
-            window.location.href = target;
-        }
-
-        // 获取面部识别元素
-        var faceRecognition = document.getElementById("面部识别");
-
-        // 点击事件处理函数
-        function handleClick() {
-            // 移除可能已有的 animate 类
-            faceRecognition.classList.remove("animate");
-
-            // 设置鼠标样式为手型   
-            faceRecognition.style.cursor = "pointer";
-
-            // 触发超链接跳转
-            window.location.href = "record.html?source=面部识别";
-        }
-
-        // 为面部识别元素添加点击事件监听器
-        faceRecognition.addEventListener("click", handleClick);
-
-    </script>
-     -->
 </body>
 
 </html>

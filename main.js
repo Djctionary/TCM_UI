@@ -28,21 +28,6 @@ for (var i = 1; i <= 10; i++) {
     }, i * 1000);
 }
 
-// var xhr = new XMLHttpRequest();
-// xhr.open('HEAD',"result",false);
-// xhr.send();
-// if(xhr.status == 200) {
-//     alert("存在")
-// }
-// else {
-//     alert("不存在")
-// }
-// prompt("请创建文件夹");
-
-// const fs = require('fs');
-// fs.mkdir('hello');
-
-
 
 // 获取面部识别元素
 var faceRecognition = document.getElementById("面部识别");
