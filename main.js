@@ -8,6 +8,14 @@ document.addEventListener('DOMContentLoaded', function() {
     inputElement.value = ID;
 });
 
+function focusOnInput() {
+    // 获取输入框元素
+    var inputElement = document.getElementById("myInput");
+
+    // 将焦点设置到输入框上
+    inputElement.focus();
+  }
+
 var bar = document.getElementById("bar");
 
 function updateProgress(i) {
