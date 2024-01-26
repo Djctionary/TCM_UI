@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask Run Python Script</title>
+</head>
+<body>
+    <h1>Flask Run Python Script</h1>
+    <button id="runButton">Run Python Script</button>
+
+    <script>
+        document.getElementById('runButton').addEventListener('click', function() {
+            // 发送 POST 请求到 Flask 服务器的 /run_python_script 路由
+            fetch('/run_python_script', { method: 'POST' })
+                .then(response => response.text())
+                .then(result => {
+                    console.log(result);
+                    // 处理成功或错误的情况
+                    alert(result === 'Success' ? 'Python 脚本运行成功' : 'Python 脚本运行失败');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('发生错误，请检查控制台');
+                });
+        });
+    </script>
+</body>
+</html>

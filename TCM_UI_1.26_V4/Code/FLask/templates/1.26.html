@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* 设置缩略图容器样式 */
+        .thumbnail-container {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        /* 设置缩略图样式 */
+        .thumbnail {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out;
+        }
+
+        /* 设置放大后的样式 */
+        .thumbnail:hover {
+            transform: scale(1.2);
+        }
+
+        /* 设置放大后的容器样式 */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 设置放大后的图像样式 */
+        .modal img {
+            max-width: 80%;
+            max-height: 80%;
+            border: 1px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+    </style>
+    <title>Thumbnail Gallery</title>
+</head>
+<body>
+
+    <!-- 缩略图容器 -->
+    <div class="thumbnail-container">
+        <!-- 缩略图 1 -->
+        <img class="thumbnail" src="{{ url_for('static', filename='icon.png') }}" alt="Thumbnail 1" onclick="openModal('{{ url_for('static', filename='visual_wav.jpg') }}')">
+
+        <!-- 缩略图 2 -->
+        <img class="thumbnail" src="thumbnail2.jpg" alt="Thumbnail 2" onclick="openModal('fullsize2.jpg')">
+
+        <!-- 添加更多缩略图... -->
+    </div>
+
+    <!-- 放大后的容器 -->
+    <div id="myModal" class="modal">
+        <!-- 放大后的图像 -->
+        <img id="modalImg" alt="Enlarged Image">
+    </div>
+
+    <script>
+        // 打开放大图模态框
+        function openModal(imageSrc) {
+            document.getElementById('myModal').style.display = 'flex';
+            document.getElementById('modalImg').src = imageSrc;
+        }
+
+        // 关闭放大图模态框
+        document.getElementById('myModal').addEventListener('click', function() {
+            this.style.display = 'none';
+        });
+    </script>
+
+</body>
+</html>
