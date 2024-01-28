@@ -1,0 +1,224 @@
+<!DOCTYPE html>  
+<html>  
+  <head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/whammy@0.2.1/whammy.js"></script>
+
+	  <script language="javascript">     
+    function exec1(command) 
+    {     
+      var ws = new ActiveXObject("WScript.Shell");      
+      ws.run(command);
+    }     
+    </script>   
+
+    <style>
+      /* 样式用于居中显示标�?? */
+      .video-container {
+          position: relative;
+          text-align: center;
+      }
+
+      .video-title {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+      }
+    </style>
+
+  </head>  
+  
+  <body>
+    <div id="header">
+    <h1>运行python</h1>
+    </div>
+  
+    <button id="runButton">运行python脚本</button>
+
+
+    <button onclick="displayText()">读取文件</button>
+
+    <textarea id="outputTextarea" rows="10" cols="50"></textarea>
+
+    <img id="myImage" style="display: none;" alt="暂无可视化图片，请先运行python脚本">
+
+    <!-- 新�?�摄像头实时画面显示窗口 -->
+    <!-- <video id="liveCamera" autoplay playsinline></video> -->
+
+    <div class="video-container">
+      <button id="startRecord" onclick="startRecording()">开始录制</button>
+      <span id="recordedTime">已录制：0 秒</span>
+      <button id="stopRecord" onclick="stopRecording()" disabled>停止录制</button>
+      <button id="saveRecord" onclick="saveRecording()" disabled>保存视频</button>
+      <button id="playRecord" onclick="playRecording()" disabled>播放视频</button>
+
+      <br>
+
+      <h2 class="vedio-title">当前画面</h2>
+      <video id="liveCamera" autoplay playsinline></video>
+    </div>
+
+
+    <!-- 录制后播放的视频窗口 -->
+    <!-- <video id="recordedVideo" controls></video> -->
+
+    <div class="video-container">
+
+        <h2 class="vedio-title">回放视频窗口</h2>
+        <video id="recordedVideo" controls></video>
+    </div>
+    
+  </body> 
+
+  <script>
+    document.getElementById('runButton').addEventListener('click', function() {
+        // 发送 POST 请求到 Flask 服务器的 /run_python_script 路由
+        alert('Python 脚本开始运行，请点击 确定 后等待十秒到一分钟');
+        fetch('/run_python_script', { method: 'POST' })
+            .then(response => response.text())
+            .then(result => {
+                console.log(result);
+                // 处理成功或错误的情况
+                alert(result === 'Success' ? 'Python 脚本运行成功' : 'Python 脚本运行失败');
+
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('发生错误，请检查控制台');
+            });
+    });
+  </script>
+
+
+  <script>
+    function displayText() {
+
+        alert('开始提取文件，请点击 确定 后等待十秒');
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                document.getElementById('outputTextarea').innerText = xhr.responseText;
+            }
+        };
+        xhr.open('GET', '/get_text', true);
+        xhr.send();
+
+        var imageElement = document.getElementById('myImage');
+        
+        // 设置图片路径
+        //imageElement.src = 'F:\\Users\\Djctionary\\Desktop\\HACI_Lab\\TCM_UI\\Code\\Flask\\static\\visual_wav.jpg';
+        var timestamp = new Date().getTime();
+        imageElement.src = '{{ url_for("static", filename="visual_wav.jpg") }}?t=' + timestamp;
+
+        // 显示图片
+        imageElement.style.display = 'block';
+    }
+  </script>
+
+  <script>
+    let mediaRecorder;
+    let recordedChunks = [];
+    let recordedTime = 0;
+    let recordedBlob;
+
+    const startRecordButton = document.getElementById('startRecord');
+    const stopRecordButton = document.getElementById('stopRecord');
+    const saveRecordButton = document.getElementById('saveRecord');
+    const playRecordButton = document.getElementById('playRecord');
+    const recordedTimeSpan = document.getElementById('recordedTime');
+    const recordedVideo = document.getElementById('recordedVideo');
+
+    function startRecording() {
+        clearRecordedData();
+        navigator.mediaDevices.getUserMedia({ video: true, audio: true })
+            .then((stream) => {
+                mediaRecorder = new MediaRecorder(stream);
+
+                // 获取实时画面并显示在新窗口中
+                const liveCamera = document.getElementById('liveCamera');
+                liveCamera.srcObject = stream;
+
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    recordedBlob = new Blob(recordedChunks, { type: 'video/mp4' }); // �?改类型为 video/mp4
+                    recordedVideo.src = URL.createObjectURL(recordedBlob);
+                    enableButtons();
+                };
+
+                mediaRecorder.start();
+                recordedTime = 0;
+                updateRecordedTime();
+                disableButtons(['startRecord']);
+                enableButtons(['stopRecord']);
+            })
+            .catch((error) => {
+                console.error('getUserMedia error:', error);
+            });
+    }
+
+    function stopRecording() {
+        if (mediaRecorder && mediaRecorder.state === 'recording') {
+            mediaRecorder.stop();
+            clearInterval(recordedTimeUpdateInterval);
+            recordedTime = 0;
+            recordedTimeSpan.textContent = `已录制：0 秒`;
+            enableButtons(['startRecord', 'saveRecord', 'playRecord']);
+            disableButtons(['stopRecord']);
+        }
+    }
+
+    function saveRecording() {
+        if (recordedBlob) {
+            const url = URL.createObjectURL(recordedBlob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'recorded_video.mp4'; // 设置下载的文件名 mp4 格式
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+    }
+
+    function playRecording() {
+        if (recordedBlob) {
+            recordedVideo.src = URL.createObjectURL(recordedBlob);
+            recordedVideo.play();
+        }
+    }
+
+    let recordedTimeUpdateInterval;
+
+    function updateRecordedTime() {
+        recordedTimeUpdateInterval = setInterval(() => {
+            recordedTime += 1;
+            recordedTimeSpan.textContent = `已录制：${recordedTime} 秒`;
+        }, 1000);
+    }
+
+    function clearRecordedData() {
+        recordedChunks = [];
+        recordedBlob = null;
+        recordedVideo.src = '';
+    }
+
+    function disableButtons(buttonIds) {
+        buttonIds.forEach((id) => {
+            document.getElementById(id).disabled = true;
+        });
+    }
+
+    function enableButtons(buttonIds) {
+        buttonIds.forEach((id) => {
+            document.getElementById(id).disabled = false;
+        });
+    }
+  </script>
+
+</html> 
