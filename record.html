@@ -4,11 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.jsdelivr.net/npm/whammy@0.2.1/whammy.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/whammy@0.2.2/whammy.js"></script> -->
 
     <title>视频录制与播放</title>
     <link rel="stylesheet" href="record.css">
-
+    <script src="RecordRTC.js"></script>
 
 </head>
 
@@ -22,9 +22,9 @@
         <button class="btn" id="startRecord" onclick="startRecording()">启动录制</button>
         <span id="recordedTime">已录制：0 秒</span>
         <button class="btn" id="stopRecord" onclick="stopRecording()" disabled>停止录制</button>
-        <button class="btn"id="saveRecord" onclick="saveRecording()" disabled>保存视频</button>
+        <button class="btn" id="saveRecord" onclick="saveRecording()" disabled>保存视频</button>
         <label id="playLabel">向下滑动观看回放</label>
-        <button class="btn"id="playRecord" onclick="playRecording()" disabled>播放视频</button>
+        <button class="btn" id="playRecord" onclick="playRecording()" disabled>播放视频</button>
     </div>
 
     <br>
@@ -85,15 +85,21 @@
         const recordedTimeSpan = document.getElementById('recordedTime');
         const recordedVideo = document.getElementById('recordedVideo');
 
+        const options = {
+        audioBitsPerSecond: 128000,
+        videoBitsPerSecond: 2500000,
+        MimeType: "video/mp4;codecs=H264,OPUS",
+      };
         function startRecording() {
             clearRecordedData();
             navigator.mediaDevices.getUserMedia({ video: true, audio: true })
                 .then((stream) => {
-                    mediaRecorder = new MediaRecorder(stream);
+                    mediaRecorder = new MediaRecorder(stream, options);
 
                     // 获取实时画面并显示在新窗口中
                     const liveCamera = document.getElementById('liveCamera');
                     liveCamera.srcObject = stream;
+                    liveCamera.muted = true;
 
                     mediaRecorder.ondataavailable = (event) => {
                         if (event.data.size > 0) {
@@ -103,8 +109,14 @@
 
                     mediaRecorder.onstop = () => {
                         recordedBlob = new Blob(recordedChunks, { type: 'video/mp4' }); // 修改类型为 video/mp4
+
+                        console.log(recordedBlob);
+                        console.log(recordedBlob.type);
+
+
                         recordedVideo.src = URL.createObjectURL(recordedBlob);
-                        enableButtons();
+                        enableButtons(['startRecord', 'saveRecord', 'playRecord']);
+                        disableButtons(['stopRecord']);
                     };
 
                     mediaRecorder.start();
@@ -121,6 +133,9 @@
         function stopRecording() {
             if (mediaRecorder && mediaRecorder.state === 'recording') {
                 mediaRecorder.stop();
+
+                console.log(mediaRecorder);
+
                 clearInterval(recordedTimeUpdateInterval);
                 recordedTime = 0;
                 recordedTimeSpan.textContent = `已录制：0 秒`;
@@ -137,6 +152,10 @@
                 var urlParams = new URLSearchParams(window.location.search);
                 var sourceValue = urlParams.get('source');
                 a.download = sourceValue + '.mp4'; // 设置下载的文件名为 mp4 格式
+
+                console.log(recordedBlob);
+                console.log(a);
+
                 document.body.appendChild(a);
                 a.click();
                 document.body.removeChild(a);
@@ -146,6 +165,10 @@
         function playRecording() {
             if (recordedBlob) {
                 recordedVideo.src = URL.createObjectURL(recordedBlob);
+
+                // 在播放时启用音频
+                recordedVideo.muted = false;
+
                 recordedVideo.play();
             }
         }

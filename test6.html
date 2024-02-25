@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Video Recorder</title>
+    <script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+    <script src="https://antimatter15.com/whammy/whammy.js"></script>
+</head>
+<body>
+    <video id="video" width="640" height="480" controls></video>
+    <button id="startRecord">Start Recording</button>
+    <button id="stopRecord">Stop Recording</button>
+    <button id="download">Download Video</button>
+
+    <script>
+        let mediaRecorder, recordedChunks = [];
+
+        const video = document.getElementById('video');
+        const startRecordButton = document.getElementById('startRecord');
+        const stopRecordButton = document.getElementById('stopRecord');
+        const downloadButton = document.getElementById('download');
+
+        startRecordButton.addEventListener('click', startRecording);
+        stopRecordButton.addEventListener('click', stopRecording);
+        downloadButton.addEventListener('click', downloadVideo);
+
+        async function startRecording() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                video.srcObject = stream;
+                recordedChunks = [];
+                mediaRecorder = new MediaRecorder(stream);
+
+                mediaRecorder.ondataavailable = (event) => {
+                    if (event.data.size > 0) {
+                        recordedChunks.push(event.data);
+                    }
+                };
+
+                mediaRecorder.onstop = () => {
+                    const webmBlob = new Blob(recordedChunks, { type: 'video/webm' });
+                    convertWebMToMp4(webmBlob);
+                };
+
+                mediaRecorder.start();
+            } catch (error) {
+                console.error('Error accessing camera:', error);
+            }
+        }
+
+        function stopRecording() {
+            if (mediaRecorder && mediaRecorder.state !== 'inactive') {
+                mediaRecorder.stop();
+            }
+        }
+
+        function downloadVideo() {
+            if (recordedChunks.length > 0) {
+                const webmBlob = new Blob(recordedChunks, { type: 'video/webm' });
+                convertWebMToMp4(webmBlob);
+            }
+        }
+
+        function convertWebMToMp4(webmBlob) {
+            const reader = new FileReader();
+            reader.onload = function () {
+                const arrayBuffer = reader.result;
+                const webmArray = new Uint8Array(arrayBuffer);
+                const videoData = new Whammy.Video(15); // 15 fps
+                videoData.add(webmArray);
+
+                const mp4Blob = videoData.compile();
+                
+                const url = URL.createObjectURL(mp4Blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'recorded-video.mp4';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            };
+            reader.readAsArrayBuffer(webmBlob);
+        }
+    </script>
+</body>
+</html>
