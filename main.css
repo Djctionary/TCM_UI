@@ -388,3 +388,113 @@ body {
     font-weight: bold;
     /* border: 1px solid black; */
 }
+
+
+
+
+/* 下面是医生诊断结果记录区域的格式 */
+.inputBox {
+    /* width: 250px; */
+    display: flex;
+    position: relative;
+}
+
+.inputBox textarea {
+    width: 100%;
+    padding: 20px 10px 10px;
+    background: transparent;
+    outline: none;
+    /* border: solid 2px #555; */
+    border: solid 2px #FFF;
+    color: #000;
+    font-size: 1em;
+    letter-spacing: 0.1em;
+    transition: border-image 0.5s, filter 0.3s ease;
+    resize: vertical;
+    border-radius: 5px;
+    min-height: 50px;
+}
+
+/* .inputBox textarea:not(:placeholder-shown), */
+.inputBox textarea:focus {
+    border-image: linear-gradient(45deg, gold, deeppink) 1;
+    filter: hue-rotate(360deg);
+    animation: huerotate 6s infinite linear;
+    clip-path: inset(0px round 5px);
+}
+
+.inputBox span {
+    position: absolute;
+    top: 0;
+    left: 0.5vw;
+    padding: 1vw;
+    pointer-events: none;
+    font-size: 2vw;
+    color: rgba(0, 0, 0, 1);
+    text-transform: uppercase;
+    letter-spacing: 0.1vw;
+    transition: transform 0.5s, font-size 0.5s, color 0.5s;
+    transform: translateY(1vw);
+}
+
+.inputBox textarea:focus~span,
+.inputBox textarea:not(:placeholder-shown)~span {
+    transform: translateY(-30px);
+    /* font-size: 0.8em; */
+
+    color: transparent;
+}
+
+@keyframes huerotate {
+    0% {
+        filter: hue-rotate(0deg);
+    }
+
+    100% {
+        filter: hue-rotate(360deg);
+    }
+}
+
+#inputBox1 {
+    /* background-color: #976e7b; */
+    background-color: #FFF;
+    opacity: 0.75;
+    border-radius: 5px;
+    grid-row-start: 2;
+    grid-column-start: 4;
+    grid-row-end: 5;
+    grid-column-end: 5;
+}
+
+#inputBox2 {
+    /* background-color: #cdb89d; */
+    background-color: #FFF;
+    opacity: 0.75;
+    border-radius: 5px;
+    grid-row-start: 5;
+    grid-column-start: 4;
+    grid-row-end: 8;
+    grid-column-end: 5;
+}
+
+#inputBox3 {
+    /* background-color: #5dc87a; */
+    background-color: #FFF;
+    opacity: 0.75;
+    border-radius: 5px;
+    grid-row-start: 8;
+    grid-column-start: 4;
+    grid-row-end: 11;
+    grid-column-end: 5;
+}
+
+#inputBox4 {
+    /* background-color: #9bde68; */
+    background-color: #FFF;
+    opacity: 0.75;
+    border-radius: 5px;
+    grid-row-start: 2;
+    grid-column-start: 8;
+    grid-row-end: 5;
+    grid-column-end: 9;
+}

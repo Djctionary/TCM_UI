@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Input Animation Example</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            flex-direction: column;
+            gap: 30px;
+            background: #222;
+        }
+
+        .inputBox {
+            width: 250px;
+            position: relative;
+        }
+
+        .inputBox textarea {
+            width: 100%;
+            padding: 20px 10px 10px;
+            background: transparent;
+            outline: none;
+            border: solid 2px #555;
+            color: #fff;
+            font-size: 1em;
+            letter-spacing: 0.1em;
+            transition: border-image 0.5s, filter 0.3s ease;
+            resize: vertical;
+            border-radius: 5px;
+            min-height: 50px;
+        }
+
+        .inputBox textarea:focus,
+        .inputBox textarea:not(:placeholder-shown)
+         {
+            border-image: linear-gradient(45deg, gold, deeppink) 1;
+            filter: hue-rotate(360deg);
+            animation: huerotate 6s infinite linear;
+            clip-path: inset(0px round 5px);
+        }
+
+        .inputBox span {
+            position: absolute;
+            top: 0;
+            left: 10px;
+            padding: 10px;
+            pointer-events: none;
+            font-size: 1em;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: transform 0.5s, font-size 0.5s, color 0.5s;
+            transform: translateY(10px);
+        }
+
+        .inputBox textarea:focus~span,
+        .inputBox textarea:not(:placeholder-shown)~span {
+            transform: translateY(-30px);
+            font-size: 0.8em;
+            color: #b0a4e3;
+        }
+
+        @keyframes huerotate {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inputBox">
+        <textarea required placeholder=" "></textarea>
+        <span>First Name</span>
+    </div>
+    <div class="inputBox">
+        <textarea required placeholder=" "></textarea>
+        <span>Last Name</span>
+    </div>
+</body>
+
+</html>
