@@ -49,6 +49,7 @@ def visualize_wav(input_file, output_file):
     # 保存图形到本地文件
     plt.savefig(output_file)
     plt.savefig(r"F:\Users\Djctionary\Desktop\HACI_Lab\TCM_UI\output\Visual\visual_wav.jpg")
+    plt.savefig(r"F:\Users\Djctionary\Desktop\github\TCM_UI\TCM_UI_1.28_V5\Code\FLask\static\visual_wav.jpg")
     print("音频可视化成功！")
     #plt.show()
 

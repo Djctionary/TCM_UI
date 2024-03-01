@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <title>大学生幸福感调查问卷</title>
+    <link rel="stylesheet" href="css/questionnaire.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/questionnaire.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='questionnaire.css') }}">
+
+</head>
+
+<body>
+    <div id="questionnaire">
+        <h1 style="font-size: 28px; ">大学生幸福感调查问卷</h1>
+        <hr />
+        <h2 style="font-size: 22px; ">答案没有对错之分，大家选择符合自己实际情况的答案即可。</h2>
+
+        <h3 style="font-size: 20px; ">知情同意书</h3>
+
+        <h4>该实验实验组已向我说明本次实验的目的和内容，
+            <br>本人自愿参加本次心理测评数据收集实验。
+            <br>我已知晓实验中所收集的个人相关信息及测评结果仅用于研究目的。
+            <br>我已了解实验所收集的相关数据和结果将匿名处理。 整个实验过程中，
+            <br>我的个人隐私将受到保护。实验中如果我感受到任何不适，我有权终止实验。
+            <br>我确认我已经完全理解本次实验的目的、内容和注意事项并同意自愿参与此次心理测评数据收集实验。
+        </h4>
+        <hr />
+            <ol>
+                <div class="basic-information">
+                <div id = "name">
+                    <label>您的姓名
+                        <input type="text"  name="name" required />
+                    </label>
+                </div>
+
+                <label>ID
+                    <input type="text"  name="id" required />
+                </label>
+                <br>
+
+                <label>年龄
+                    <input type="text"  name="age" required />
+                </label>
+
+                <label>籍贯
+                    <input type="text"  name="hometown" required />
+                </label>
+                <br>
+
+                <label>家庭人口
+                    <input type="text"  name="family_size" required />
+                </label>
+
+                <p>您的性别</p>
+                <label>
+                    <input type="radio" name="gender" value="男" />
+                    男 </label>
+                <label>
+                    <input type="radio" name="gender" value="女" />
+                    女 </label>
+                <label>
+                    <input type="radio" name="gender" value="其他" />
+                     其他</label>
+                <br>
+
+                <p>是否有经济压力</p>
+                <label>
+                    <input type="radio" name="economy" value="无" />
+                    无 </label>
+                <label>
+                    <input type="radio" name="economy" value="有轻微经济压力" />
+                    有轻微经济压力 </label>
+                <label>
+                    <input type="radio" name="economy" value="有经济压力" />
+                    有经济压力 </label>
+                <label>
+                    <input type="radio" name="economy" value="经济压力严重以至无法承受" />
+                    经济压力严重以至无法承受 </label>
+                </div>
+
+
+                <div class="questionnaire">
+                <hr />
+
+                    <li>心情</li>
+                    <label><input type="radio" name="q1" value="我不感到忧愁"> 我不感到忧愁</label><br>
+                    <label><input type="radio" name="q1" value="我感到忧愁"> 我感到忧愁</label><br>
+                    <label><input type="radio" name="q1" value="我整天都感到忧愁，且不能改变这种情绪"> 我整天都感到忧愁，且不能改变这种情绪</label><br>
+                    <label><input type="radio" name="q1" value="我非常忧伤或不愉快，以致我不能忍受"> 我非常忧伤或不愉快，以致我不能忍受</label><br>
+                    <br>
+
+                    <li>悲观</li>
+                    <label><input type="radio" name="q2" value="我对于将来我不感到悲观"> 我对于将来我不感到悲观</label><br>
+                    <label><input type="radio" name="q2" value="我对将来感到悲观"> 我对将来感到悲观</label><br>
+                    <label><input type="radio" name="q2" value="我感到没有什么可指望的"> 我感到没有什么可指望的</label><br>
+                    <label><input type="radio" name="q2" value="我感到将来无望，事事都不能变好"> 我感到将来无望，事事都不能变好</label><br>
+                    <br>
+
+                    <li>失败感</li>
+                    <label><input type="radio" name="q3" value="我不像一个失败者"> 我不像一个失败者</label><br>
+                    <label><input type="radio" name="q3" value="我觉得我比一般人失败的次数多些"> 我觉得我比一般人失败的次数多些</label><br>
+                    <label><input type="radio" name="q3" value="当我回首过去我看到的是许多失败"> 当我回首过去我看到的是许多失败</label><br>
+                    <label><input type="radio" name="q3" value="我感到自己是一个彻底失败了的人"> 我感到自己是一个彻底失败了的人</label><br>
+
+                    <li>不满</li>
+                    <label><input type="radio" name="q4" value="我对事物像往常一样满意"> 我对事物像往常一样满意</label><br>
+                    <label><input type="radio" name="q4" value="我对事物不像往常一样满意"> 我对事物不像往常一样满意</label><br>
+                    <label><input type="radio" name="q4" value="我不再对任何事情感到真正的满意"> 我不再对任何事情感到真正的满意</label><br>
+                    <label><input type="radio" name="q4" value="我对每件事都不满意或讨厌"> 我对每件事都不满意或讨厌</label><br>
+                    <br>
+
+                    <li>自罪感</li>
+                    <label><input type="radio" name="q5" value="我没有特别感到内疚"> 我没有特别感到内疚</label><br>
+                    <label><input type="radio" name="q5" value="在相当一部分时间我感到内疚"> 在相当一部分时间我感到内疚</label><br>
+                    <label><input type="radio" name="q5" value="在部分时间里我感到内疚"> 在部分时间里我感到内疚</label><br>
+                    <label><input type="radio" name="q5" value="我时刻感到内疚"> 我时刻感到内疚</label><br>
+                    <br>
+
+                    <li>惩罚感</li>
+                    <label><input type="radio" name="q6" value="我没有感到正在受惩罚"> 我没有感到正在受惩罚</label><br>
+                    <label><input type="radio" name="q6" value="我感到我可能受到惩罚"> 我感到我可能受到惩罚</label><br>
+                    <label><input type="radio" name="q6" value="我预感我会受惩罚"> 我预感我会受惩罚</label><br>
+                    <label><input type="radio" name="q6" value="我感到我正在受惩罚"> 我感到我正在受惩罚</label><br>
+                    <br>
+
+                    <li>自厌</li>
+                    <label><input type="radio" name="q7" value="我感到我并不使人失望"> 我感到我并不使人失望</label><br>
+                    <label><input type="radio" name="q7" value="我对自己失望"> 我对自己失望</label><br>
+                    <label><input type="radio" name="q7" value="我讨厌自己"> 我讨厌自己</label><br>
+                    <label><input type="radio" name="q7" value="我痛恨自己"> 我痛恨自己</label><br>
+                    <br>
+
+                    <li>自责</li>
+                    <label><input type="radio" name="q8" value="我感觉到我并不比别人差"> 我感觉到我并不比别人差</label><br>
+                    <label><input type="radio" name="q8" value="我对自己的缺点和错误常自我反省"> 我对自己的缺点和错误常自我反省</label><br>
+                    <label><input type="radio" name="q8" value="我经常责备自己的过失"> 我经常责备自己的过失</label><br>
+                    <label><input type="radio" name="q8" value="每次发生糟糕的事我都责备自己"> 每次发生糟糕的事我都责备自己</label><br>
+                    <br>
+
+                    <li>自杀倾向</li>
+                    <label><input type="radio" name="q9" value="我没有任何自杀的想法"> 我没有任何自杀的想法</label><br>
+                    <label><input type="radio" name="q9" value="我有自杀的念头但不会真去自杀"> 我有自杀的念头但不会真去自杀</label><br>
+                    <label><input type="radio" name="q9" value="我很想自杀"> 我很想自杀</label><br>
+                    <label><input type="radio" name="q9" value="如果有机会我就会自杀"> 如果有机会我就会自杀</label><br>
+                    <br>
+
+                    <li>痛苦</li>
+                    <label><input type="radio" name="q10" value="我并不比以往爱哭"> 我并不比以往爱哭</label><br>
+                    <label><input type="radio" name="q10" value="我现在比以前爱哭"> 我现在比以前爱哭</label><br>
+                    <label><input type="radio" name="q10" value="现在我经常哭"> 现在我经常哭</label><br>
+                    <label><input type="radio" name="q10" value="我以前能哭，但现在即使我想哭也哭不出来"> 我以前能哭，但现在即使我想哭也哭不出来</label><br>
+                    <br>
+
+                    <li>易激动</li>
+                    <label><input type="radio" name="q11" value="我并不比以往容易激怒"> 我并不比以往容易激怒</label><br>
+                    <label><input type="radio" name="q11" value="我比以往容易激怒或容易生气"> 我比以往容易激怒或容易生气</label><br>
+                    <label><input type="radio" name="q11" value="我现在经常容易发火"> 我现在经常容易发火</label><br>
+                    <label><input type="radio" name="q11" value="以往能激怒我的那些事情现在则完全不能激怒我了"> 以往能激怒我的那些事情现在则完全不能激怒我了</label><br>
+                    <br>
+
+                    <li>社会退缩</li>
+                    <label><input type="radio" name="q12" value="我对他人的兴趣没有减少"> 我对他人的兴趣没有减少</label><br>
+                    <label><input type="radio" name="q12" value="我对他人的兴趣比以往减少了"> 我对他人的兴趣比以往减少了</label><br>
+                    <label><input type="radio" name="q12" value="我对他人丧失了大部分兴趣"> 我对他人丧失了大部分兴趣</label><br>
+                    <label><input type="radio" name="q12" value="我对他人毫无兴趣"> 我对他人毫无兴趣</label><br>
+                    <br>
+
+                    <li>犹豫不决</li>
+                    <label><input type="radio" name="q13" value="我与以往一样能作决定"> 我与以往一样能作决定</label><br>
+                    <label><input type="radio" name="q13" value="我现在作决定没有以前果断"> 我现在作决定没有以前果断</label><br>
+                    <label><input type="radio" name="q13" value="我现在作决定比以前困难得多"> 我现在作决定比以前困难得多</label><br>
+                    <label><input type="radio" name="q13" value="我现在完全不能作决定"> 我现在完全不能作决定</label><br>
+                    <br>
+
+                    <li>形象歪曲</li>
+                    <label><input type="radio" name="q14" value="我觉得自己看上去和以前差不多"> 我觉得自己看上去和以前差不多</label><br>
+                    <label><input type="radio" name="q14" value="我担心自己看上去老了或没有以前好看了"> 我担心自己看上去老了或没有以前好看了</label><br>
+                    <label><input type="radio" name="q14" value="我觉得自己的外貌变得不好看了，而且永久性的改变"> 我觉得自己的外貌变得不好看了，而且永久性的改变</label><br>
+                    <label><input type="radio" name="q14" value="我认为自己看上去很丑了"> 我认为自己看上去很丑了</label><br>
+                    <br>
+
+                    <li>活动受抑制</li>
+                    <label><input type="radio" name="q15" value="我能像以往一样工作"> 我能像以往一样工作</label><br>
+                    <label><input type="radio" name="q15" value="我要经一番特别努力才开始做事"> 我要经一番特别努力才开始做事</label><br>
+                    <label><input type="radio" name="q15" value="我做任何事情都必须作很大的努力，强迫自己去做"> 我做任何事情都必须作很大的努力，强迫自己去做</label><br>
+                    <label><input type="radio" name="q15" value="我完全不能工作"> 我完全不能工作</label><br>
+                    <br>
+
+                    <li>睡眠障碍</li>
+                    <label><input type="radio" name="q16" value="我睡眠像以往一样好"> 我睡眠像以往一样好</label><br>
+                    <label><input type="radio" name="q16" value="我睡眠没有以往那么好"> 我睡眠没有以往那么好</label><br>
+                    <label><input type="radio" name="q16" value="我比往常早醒1~2个小时，再入睡有困难"> 我比往常早醒1~2个小时，再入睡有困难</label><br>
+                    <label><input type="radio" name="q16" value="我比往常早醒几个小时，且不能再入睡"> 我比往常早醒几个小时，且不能再入睡</label><br>
+                    <br>
+
+                    <li>疲劳</li>
+                    <label><input type="radio" name="q17" value="我现在并不比以前感到容易疲劳"> 我现在并不比以前感到容易疲劳</label><br>
+                    <label><input type="radio" name="q17" value="我现在比以往容易疲劳"> 我现在比以往容易疲劳</label><br>
+                    <label><input type="radio" name="q17" value="我做任何事情都容易疲劳"> 我做任何事情都容易疲劳</label><br>
+                    <label><input type="radio" name="q17" value="我太疲劳了，以致我不能做任何事情"> 我太疲劳了，以致我不能做任何事情</label><br>
+                    <br>
+
+                    <li>食欲下降</li>
+                    <label><input type="radio" name="q18" value="我的食欲与以前一样好"> 我的食欲与以前一样好</label><br>
+                    <label><input type="radio" name="q18" value="我现在食欲没有往常那样好"> 我现在食欲没有往常那样好</label><br>
+                    <label><input type="radio" name="q18" value="我的食欲现在差多了"> 我的食欲现在差多了</label><br>
+                    <label><input type="radio" name="q18" value="我完全没有食欲"> 我完全没有食欲</label><br>
+                    <br>
+
+                    <li>体重减轻</li>
+                    <label><input type="radio" name="q19" value="我最近没有明显的体重减轻"> 我最近没有明显的体重减轻</label><br>
+                    <label><input type="radio" name="q19" value="我体重下降超过2.5千克"> 我体重下降超过2.5千克</label><br>
+                    <label><input type="radio" name="q19" value="我体重下降超过5千克"> 我体重下降超过5千克</label><br>
+                    <label><input type="radio" name="q19" value="我体重下降超过7.5千克，我用控制饮食来减轻体重"> 我体重下降超过7.5千克，我用控制饮食来减轻体重</label><br>
+                    <br>
+
+                    <li>有关躯体的健康观念</li>
+                    <label><input type="radio" name="q20" value="与以往比，我并不怎么担心身体的健康"> 与以往比，我并不怎么担心身体的健康</label><br>
+                    <label><input type="radio" name="q20" value="我担心自己身体的毛病，如疼痛、反胃以及便秘等"> 我担心自己身体的毛病，如疼痛、反胃以及便秘等</label><br>
+                    <label><input type="radio" name="q20" value="我很着急身体出毛病而妨碍我思考其他问题"> 我很着急身体出毛病而妨碍我思考其他问题</label><br>
+                    <label><input type="radio" name="q20" value="我非常着急身体疾病，以致不能思考任何其他事情"> 我非常着急身体疾病，以致不能思考任何其他事情</label><br>
+                    <br>
+
+                    <li>性欲减退</li>
+                    <label><input type="radio" name="q21" value="我的性欲最近没有什么变化"> 我的性欲最近没有什么变化</label><br>
+                    <label><input type="radio" name="q21" value="我的性欲比以往差些"> 我的性欲比以往差些</label><br>
+                    <label><input type="radio" name="q21" value="现在我的性欲比以往减退了许多"> 现在我的性欲比以往减退了许多</label><br>
+                    <label><input type="radio" name="q21" value="我完全丧失了性欲"> 我完全丧失了性欲</label><br>
+                    <br>
+
+                </div>
+            </ol>
+             <div id="btn">
+                <button type="submit" onclick="download()">提交</button>
+             </div>
+    </div>
+</body>
+
+    <script src="{{ url_for('static', filename='questionnaire.js') }}"></script>
+</html>
+

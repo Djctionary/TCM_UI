@@ -157,7 +157,7 @@ document.getElementById('文字转录').addEventListener('click', function() {
                 var imageElement = document.getElementById('可视化图片');
 
                 // 更新 <img> 元素的 src 属性
-                imageElement.src = "static/visual_wav.jpg";
+                imageElement.src = "static/visual_wav.jpg?v=" + new Date().getTime();
 
                 // 显示图片
                 document.getElementById('可视化图片').style.display = 'block';
@@ -194,4 +194,12 @@ document.getElementById('保存').addEventListener('click', function() {
     xhr.open('POST', '/create_folder', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.send(JSON.stringify({ 'id': id }));
+});
+
+document.getElementById('重置').addEventListener('click', function() {
+    // Select the input element inside the specified div
+    var myInput = document.getElementById('ID').querySelector('input');
+
+    // Clear the value of the input
+    myInput.value = '';
 });

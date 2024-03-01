@@ -29,16 +29,6 @@ def get_text():
         text_content = file.read()
     return text_content
 
-
-@app.route('/get_visual')
-def get_visual():
-    # 生成图片的 URL
-    image_url = url_for('static', filename='visual_wav.jpg')
-
-    # 返回 JSON 格式的响应，包含图片的 URL
-    return jsonify({"image_url": image_url})
-
-
 @app.route('/record.html')
 def record():
     return render_template('record.html')
@@ -90,6 +80,8 @@ def create_folder():
         return jsonify({'message': 'Folder created successfully'})
     except Exception as e:
         return jsonify({'error': str(e)})
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)

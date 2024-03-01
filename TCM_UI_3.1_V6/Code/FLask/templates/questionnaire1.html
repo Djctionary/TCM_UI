@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <title>大学生性格调查问卷</title>
+    <link rel="stylesheet" href="css/questionnaire.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/questionnaire.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='questionnaire.css') }}">
+
+</head>
+
+<body>
+    <div id="questionnaire">
+        <h1 style="font-size: 28px; ">大学生性格调查问卷</h1>
+        <hr />
+        <h2 style="font-size: 22px; ">答案没有对错之分，大家选择符合自己实际情况的答案即可。</h2>
+
+        <h3 style="font-size: 20px; ">知情同意书</h3>
+
+        <h4>该实验实验组已向我说明本次实验的目的和内容，
+            <br>本人自愿参加本次心理测评数据收集实验。
+            <br>我已知晓实验中所收集的个人相关信息及测评结果仅用于研究目的。
+            <br>我已了解实验所收集的相关数据和结果将匿名处理。 整个实验过程中，
+            <br>我的个人隐私将受到保护。实验中如果我感受到任何不适，我有权终止实验。
+            <br>我确认我已经完全理解本次实验的目的、内容和注意事项并同意自愿参与此次心理测评数据收集实验。
+        </h4>
+        <hr />
+
+            <ol>
+                <div class="basic-information">
+                <div id = "name">
+                    <label>您的姓名
+                        <input type="text"  name="name" required />
+                    </label>
+                </div>
+
+                <label>ID
+                    <input type="text"  name="id" required />
+                </label>
+                <br>
+
+                <label>年龄
+                    <input type="text"  name="age" required />
+                </label>
+
+                <label>籍贯
+                    <input type="text"  name="hometown" required />
+                </label>
+                <br>
+
+                <label>家庭人口
+                    <input type="text"  name="family_size" required />
+                </label>
+
+
+                <p>您的性别</p>
+                <label>
+                    <input type="radio" name="gender" value="男" />
+                    男 </label>
+                <label>
+                    <input type="radio" name="gender" value="女" />
+                    女 </label>
+                <label>
+                    <input type="radio" name="gender" value="其他" />
+                     其他</label>
+                <br>
+
+
+                <p>是否有经济压力</p>
+                <label>
+                    <input type="radio" name="economy" value="无" />
+                    无 </label>
+                <label>
+                    <input type="radio" name="economy" value="有轻微经济压力" />
+                    有轻微经济压力 </label>
+                <label>
+                    <input type="radio" name="economy" value="有经济压力" />
+                    有经济压力 </label>
+                <label>
+                    <input type="radio" name="economy" value="经济压力严重以至无法承受" />
+                    经济压力严重以至无法承受 </label>
+                </div>
+
+                <div class="questionnaire">
+                <hr />
+                <li>我认为自己是一个内向的人</li>
+                <label>
+                    <input type="radio" name="q1" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q1" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q1" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q1" value="同意" />
+                    同意 </label>
+                <label>
+                    <input type="radio" name="q1" value="非常同意" />
+                    非常同意 </label>
+                <br>
+                <li>我认为自己是一个通常很信任他人的人</li>
+                <label>
+                    <input type="radio" name="q2" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q2" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q2" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q2" value="同意" />
+                    同意 </label>
+                <label>
+                    <input type="radio" name="q2" value="非常同意" />
+                    非常同意 </label>
+                <br>
+
+                <li>我认为自己是一个倾向于懒惰的人</li>
+                <label>
+                    <input type="radio" name="q3" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q3" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q3" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q3" value="同意" />
+                    同意 </label>
+                <label>
+                    <input type="radio" name="q3" value="非常同意" />
+                    非常同意 </label>
+                <br>
+
+                <li>我认为自己是一个轻松自如，能够处理压力的人</li>
+                <label>
+                    <input type="radio" name="q4" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q4" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q4" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q4" value="同意" />
+                    同意 </label>
+                <label>
+                    <input type="radio" name="q4" value="非常同意" />
+                    非常同意 </label>
+                <br>
+
+                <li>我认为自己是一个艺术兴趣较少的人</li>
+                <label>
+                    <input type="radio" name="q5" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q5" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q5" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q5" value="同意" />
+                    同意 </label>
+                <label>
+                    <input type="radio" name="q5" value="非常同意" />
+                    非常同意 </label>
+                <br>
+
+                <li>我认为自己是一个外向、善于社交的人</li>
+                <label>
+                    <input type="radio" name="q6" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q6" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q6" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q6" value="同意" />
+                    同意 </label>
+                <label>
+                    <input type="radio" name="q6" value="非常同意" />
+                    非常同意 </label>
+                <br>
+
+                <li>我认为自己是一个倾向于挑剔别人的人</li>
+                <label>
+                    <input type="radio" name="q7" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q7" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q7" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q7" value="同" />
+                    同意 </label>
+                <label>
+                    <input type="radio" name="q7" value="非常同意" />
+                    非常同意 </label>
+                <br>
+
+                <li>我认为自己是一个做事彻底的人</li>
+                <label>
+                    <input type="radio" name="q8" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q8" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q8" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q8" value="同意" />
+                    同意
+                <label>
+                    <input type="radio" name="q8" value="非常同意" />
+                    非常同意 </label>
+                <br>
+
+                <li>我认为自己是一个容易紧张的人</li>
+                <label>
+                    <input type="radio" name="q9" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q9" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q9" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q9" value="同意" />
+                    同意
+                </label>
+                    <input type="radio" name="q9" value="非常同意" />
+                    非常同意
+                </label>
+                <br>
+
+                <li>我认为自己是一个想象力丰富的人</li>
+                <label>
+                    <input type="radio" name="q10" value="非常不同意" />
+                    非常不同意 </label>
+                <label>
+                    <input type="radio" name="q10" value="不同意" />
+                    不同意 </label>
+                <label>
+                    <input type="radio" name="q10" value="说不准" />
+                    说不准 </label>
+                <label>
+                    <input type="radio" name="q10" value="同意" />
+                    同意
+                </label>
+                <label>
+                    <input type="radio" name="q10" value="非常同意" />
+                    非常同意
+                </label>
+                </div>
+            </ol>
+             <div id="btn">
+                <button type="submit" onclick="download()">提交</button>
+             </div>
+    </div>
+</body>
+
+    <script src="{{ url_for('static', filename='questionnaire.js') }}"></script>
+</html>
+

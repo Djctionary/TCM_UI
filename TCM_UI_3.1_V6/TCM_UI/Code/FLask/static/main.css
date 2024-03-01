@@ -1,0 +1,421 @@
+body {
+    text-align: center;
+    align-items: center;
+    background-image: url("background1.jpeg");
+    background-size: cover;
+}
+
+.angry-grid {
+    display: grid;
+    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: repeat(11, 1fr);
+    gap: 2vh;
+    height: 98vh;
+}
+
+.text-display {
+            width: 700px;
+            height: 70px;
+            padding: 5px;
+            position: absolute;
+            top: 500px;  /* 距离顶部的位置 */
+            left: 500px;  /* 距离左侧的位置 */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 18px;
+            line-height: 30px;
+            text-align: left;
+}
+
+/* 设置缩略图容器样式 */
+.thumbnail-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 设置缩略图样式 */
+.thumbnail {
+    position: absolute;  /* 绝对定位 */
+    top: -330px;  /* 距离顶部的位置 */
+    left: 1100px;  /* 距离左侧的位置 */
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+}
+
+/* 设置放大后的样式 */
+.thumbnail:hover {
+    transform: scale(1.2);
+}
+
+.GUI {
+    grid-row-start: 1;
+    grid-column-start: 21;
+    grid-row-end: 2;
+    grid-column-end: 22;
+
+}
+
+/* 设置放大后的容器样式 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+}
+
+/* 设置放大后的图像样式 */
+.modal img {
+    max-width: 80%;
+    max-height: 80%;
+    border: 1px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+#ID,
+#面部识别,
+#舌相抓取,
+#步态记录,
+#患者自述,
+#文字转录,
+#结果记录,
+#可视化图片,
+#问卷1,
+#问卷2,
+#问卷3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    transition: 1s;
+    border-radius: 10px;
+    opacity: 0.75;
+    pointer-events: auto;
+    /* 添加这一行 */
+}
+
+#ID {
+    flex-direction: row;
+    background-color: #000;
+    color: #fff;
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-row-end: 2;
+    grid-column-end: 3;
+}
+
+#面部识别 {
+    background-color: #976e7b;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-row-end: 5;
+    grid-column-end: 4;
+}
+
+#舌相抓取 {
+
+    background-color: #cdb89d;
+    grid-row-start: 5;
+    grid-column-start: 1;
+
+    grid-row-end: 8;
+    grid-column-end: 4;
+
+}
+
+#步态记录 {
+
+    background-color: #5dc87a;
+    grid-row-start: 8;
+    grid-column-start: 1;
+
+    grid-row-end: 11;
+    grid-column-end: 4;
+
+}
+
+#患者自述 {
+
+    background-color: #9bde68;
+    grid-row-start: 2;
+    grid-column-start: 5;
+
+    grid-row-end: 5;
+    grid-column-end: 8;
+
+}
+
+#文字转录 {
+
+    background-color: #68bcd;
+    grid-row-start: 5;
+    grid-column-start: 5;
+
+    grid-row-end: 6;
+    grid-column-end: 6;
+
+}
+
+
+#结果记录 {
+
+    background-color: #ba56fd;
+    grid-row-start: 6;
+    grid-column-start: 5;
+
+    grid-row-end: 11;
+    grid-column-end: 12;
+
+}
+
+#问卷1 {
+
+    background-color: #d67bd8;
+    grid-row-start: 2;
+    grid-column-start: 9;
+
+    grid-row-end: 3;
+    grid-column-end: 12;
+
+}
+
+#问卷2 {
+
+    background-color: #9d8d78;
+    grid-row-start: 3;
+    grid-column-start: 9;
+
+    grid-row-end: 4;
+    grid-column-end: 12;
+
+}
+
+#问卷3 {
+
+    background-color: #dbdef9;
+    grid-row-start: 4;
+    grid-column-start: 9;
+
+    grid-row-end: 5;
+    grid-column-end: 12;
+
+}
+
+#ID:hover,
+#面部识别:hover,
+#舌相抓取:hover,
+#步态记录:hover,
+#患者自述:hover,
+#文字转录:hover,
+#结果记录:hover,
+#问卷1:hover,
+#问卷2:hover,
+#问卷3:hover {
+    /* color: #00e2ff; */
+    color: #fff;
+    cursor: pointer;
+}
+
+#ID::before,
+#面部识别::before,
+#ID::after,
+#面部识别::after,
+#舌相抓取::before,
+#舌相抓取::after,
+#步态记录::before,
+#步态记录::after,
+#患者自述::before,
+#患者自述::after,
+#文字转录::before,
+#文字转录::after,
+#结果记录::before,
+#结果记录::after,
+#问卷1::before,
+#问卷1::after,
+#问卷2::before,
+#问卷2::after,
+#问卷3::before,
+#问卷3::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+#ID:hover::before,
+#面部识别:hover::before,
+#舌相抓取:hover::before,
+#步态记录:hover::before,
+#患者自述:hover::before,
+#文字转录:hover::before,
+#结果记录:hover::before,
+#问卷1:hover::before,
+#问卷2:hover::before,
+#问卷3:hover::before {
+    transition: width .5s, height .5s, border-bottom-color 0s;
+    transition-delay: .5s, 0s, .5s;
+    width: 100%;
+    height: 100%;
+    border-left: 3px solid #00e2ff;
+    border-bottom: 3px solid #00e2ff;
+}
+
+#ID:hover::after,
+#面部识别:hover::after,
+#舌相抓取:hover::after,
+#步态记录:hover::after,
+#患者自述:hover::after,
+#文字转录:hover::after,
+#结果记录:hover::after,
+#问卷1:hover::after,
+#问卷2:hover::after,
+#问卷3:hover::after {
+    transition: width .5s, height .5s, border-right-color .5s;
+    transition-delay: 0s, .5s, .5s;
+    width: 100%;
+    height: 100%;
+    border-top: 3px solid #00e2ff;
+    border-right: 3px solid #00e2ff;
+}
+
+.重置,
+.保存,
+.文字转录 {
+    font-family: "Helvetica", "Arial", sans-serif;
+    font-size: 1em;
+    padding: 1em 2em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #68bcde;
+    color: #fff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    transition: transform ease-in 0.1s, box-shadow ease-in 0.25s;
+    box-shadow: 0 2px 25px rgba(104, 188, 222, 0.5);
+    cursor: pointer;
+
+}
+
+.文字转录 {
+    grid-row-start: 5;
+    grid-column-start: 5;
+    grid-row-end: 6;
+    grid-column-end: 7;
+}
+
+.保存 {
+    grid-row-start: 1;
+    grid-column-start: 11;
+    grid-row-end: 2;
+    grid-column-end: 12;
+}
+
+.重置 {
+    grid-row-start: 1;
+    grid-column-start: 9;
+    grid-row-end: 2;
+    grid-column-end: 10;
+}
+
+.重置:focus,
+.保存:focus,
+.文字转录:focus {
+    outline: 0;
+}
+
+.重置:before,
+.重置:after,
+.保存:before,
+.保存:after,
+.文字转录:before,
+.文字转录:after {
+    position: absolute;
+    content: "";
+    display: block;
+    width: 140%;
+    height: 100%;
+    left: -20%;
+    z-index: -1000;
+    transition: all ease-in-out 0.5s;
+    background-repeat: no-repeat;
+}
+
+.重置:before,
+.保存:before,
+.文字转录:before {
+    display: none;
+    top: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 20%, #ff0081 20%, transparent 30%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 10% 10%, 20% 20%, 15% 15%, 20% 20%, 18% 18%, 10% 10%, 15% 15%, 10% 10%, 18% 18%;
+}
+
+.重置:after,
+.保存:after,
+.文字转录:after {
+    display: none;
+    bottom: -75%;
+    background-image: radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, transparent 10%, #ff0081 15%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%), radial-gradient(circle, #ff0081 20%, transparent 20%);
+    background-size: 15% 15%, 20% 20%, 18% 18%, 20% 20%, 15% 15%, 10% 10%, 20% 20%;
+}
+
+.重置:active,
+.保存:active,
+.文字转录:active {
+    transform: scale(0.9);
+    background-color: #e60074;
+    box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
+}
+
+.重置.animate:before,
+.保存.animate:before,
+.文字转录.animate:before {
+    display: block;
+    animation: topBubbles ease-in-out 0.75s forwards;
+}
+
+.重置.animate:after,
+.保存.animate:after,
+.文字转录.animate:after {
+    display: block;
+    animation: bottomBubbles ease-in-out 0.75s forwards;
+}
+
+@property --progress {
+    syntax: '<percentage>';
+    inherits: false;
+    initial-value: 0%;
+}
+
+.g-progress {
+    opacity: 0.75;
+    grid-row-start: 5;
+    grid-column-start: 7;
+
+    grid-row-end: 6;
+    grid-column-end: 12;
+    border-radius: 25px;
+    background: linear-gradient(90deg, #0f0, #0ff var(--progress), transparent 0);
+    border: 1px solid #eee;
+    transition: 40s --progress;
+}
