@@ -1,0 +1,124 @@
+body {
+    background-color:#CCCCCC;/*??????�M????????*/
+    }
+
+#questionnaire{
+    background-color:white;
+    padding:15px;
+    margin: auto;
+    width:900px;
+    text-align:center;
+    font-family:"??????";
+    box-shadow: 10px 10px 15px black;
+}
+
+#name {
+    display: inline-block;
+}
+
+.questionnaire{
+    text-align:left;
+    width:80%;
+    margin:auto;
+}
+.basic-information{
+    text-align:left;
+    width:80%;
+    margin:auto;
+}
+
+/*???????*/
+h1{
+color:green;
+}
+
+h3{
+color:red;
+}
+
+h4{
+    text-align: center;       /* 文字居中 */
+    font-weight: normal;
+    margin: 5px 160px;         /* 上下边距为10px，左右边距为20px */
+    line-height: 1.5;
+}
+
+h5 {
+
+}
+
+h6 {
+    font-weight: normal;
+}
+
+
+/* 初始样式 */
+table {
+    width: 70%; /* 设置表格宽度 */
+    margin: 0 auto; /* 居中显示 */
+    font-family: Arial, sans-serif; /* 设置字体 */
+    color: #333; /* 设置字体颜色 */
+}
+th, td {
+    padding: 10px; /* 设置单元格内边距 */
+    border: 1px solid #ccc; /* 设置边框 */
+}
+
+/*???????*/
+hr{
+    width:80%;
+    border:green 1px solid;
+    margin-bottom:15px;
+}
+
+/*?????*/
+form{
+    text-align:left;
+    width:80%;
+    margin:auto;
+}
+
+/*?��???????*/
+li{
+    margin:10px 0;
+    font-size: 17px;
+}
+
+/*????????*/
+input{
+    margin:10px;
+}
+
+/*????????*/
+input[type="text"],input[type="tel"]{
+    width:130px;
+    height:20px;
+    font-size:16px;
+    font-family:"??????";
+    border:0px;
+    border-bottom:1px solid;
+    outline:none;
+}
+
+/*?????????div??????*/
+#btn{
+    text-align:center;
+}
+
+/*??????*/
+button{
+    width:120px;
+    height:40px;
+    background-color:green;
+    border:0px;
+    color: white;
+    margin:10px;
+    font-size:18px;
+    font-family:"??????";
+    font-weight:bold;
+}
+
+/*??????????????*/
+button:hover{
+    background-color:#055003;
+}

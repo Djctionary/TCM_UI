@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" >
+    <title>中医体质分类与判定自测表</title>
+    <link rel="stylesheet" href="css/questionnaire.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/questionnaire.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='questionnaire.css') }}">
+
+</head>
+
+<body>
+    <div id="questionnaire">
+        <h1 style="font-size: 28px; ">中医体质分类与判定自测表</h1>
+        <hr />
+        <h2 style="font-size: 22px; ">答案没有对错之分，大家选择符合自己实际情况的答案即可。</h2>
+        <h3 style="font-size: 20px; ">计分方法与评判标准：</h3>
+        <h4>每条题目下设5级答案，由无到有的倾向性给出1~5分的分值（其中标有*的条目为逆向计分项目)，以单选方式选择，然后对每类的原始分采用简单求和法。
+            <br>原始分数 = 各条题目分支的累加和。
+            <br>转化分数 = [ ( 原始分 - 条目数 ) / ( 条目数×4 ) ] × 100。
+            <br>平和体质与偏颇体质判定标准为：
+        </h4>
+        <table id="myTable">
+            <thead>
+                <tr>
+                    <th>列体质类型</th>
+                    <th>条件</th>
+                    <th>判定结果</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="5">平和体质</td>
+                    <td>转化分 >= 60分</td>
+                    <td rowspan="2">是</td>
+                </tr>
+                <tr>
+                    <td>其他 8 种体质转化分均 < 30分</td>
+                </tr>
+                <tr>
+                    <td>转化分 >= 60分</td>
+                    <td rowspan="2">基本是</td>
+                </tr>
+                <tr>
+                    <td>其他 8 种体质转化分均 < 40分</td>
+                </tr>
+                <tr>
+                    <td>不满足上述条件者</td>
+                    <td>否</td>
+                </tr>
+                <tr>
+                    <td rowspan="3">偏颇体质</td>
+                    <td>转化分 >= 40分</td>
+                    <td>是</td>
+                </tr>
+                <tr>
+                    <td>转化分 30 ~ 39分</td>
+                    <td>倾向是</td>
+                </tr>
+                <tr>
+                    <td>转化分 < 30分</td>
+                    <td>否</td>
+                </tr>
+
+            </tbody>
+        </table>
+        <hr />
+            <ol>
+                <div class="basic-information">
+                <div id = "name">
+                    <label>您的姓名
+                        <input type="text"  name="name" required />
+                    </label>
+                </div>
+
+                <label>ID
+                    <input type="text"  name="id" required />
+                </label>
+                <br>
+
+                <label>年龄
+                    <input type="text"  name="age" required />
+                </label>
+
+                <label>籍贯
+                    <input type="text"  name="hometown" required />
+                </label>
+                <br>
+
+                <label>家庭人口
+                    <input type="text"  name="family_size" required />
+                </label>
+
+                <p>您的性别</p>
+                <label>
+                    <input type="radio" name="gender" value="男" />
+                    男 </label>
+                <label>
+                    <input type="radio" name="gender" value="女" />
+                    女 </label>
+                <label>
+                    <input type="radio" name="gender" value="其他" />
+                     其他</label>
+                <br>
+
+                <p>是否有经济压力</p>
+                <label>
+                    <input type="radio" name="economy" value="无" />
+                    无 </label>
+                <label>
+                    <input type="radio" name="economy" value="有轻微经济压力" />
+                    有轻微经济压力 </label>
+                <label>
+                    <input type="radio" name="economy" value="有经济压力" />
+                    有经济压力 </label>
+                <label>
+                    <input type="radio" name="economy" value="经济压力严重以至无法承受" />
+                    经济压力严重以至无法承受 </label>
+                </div>
+
+
+                <div class="questionnaire">
+                <hr />
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">阳虚体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+
+                    <li style="margin-top: 0px;">您手脚发凉吗？</li>
+                    <label><input type="radio" name="q1" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q1" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q1" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q1" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q1" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您胃脘部、背部或腰膝部怕冷吗？</li>
+                    <label><input type="radio" name="q2" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q2" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q2" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q2" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q2" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您感到怕冷、衣服比别人穿得多吗？</li>
+                    <label><input type="radio" name="q3" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q3" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q3" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q3" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q3" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您比一般人耐受不了寒冷（冬天的寒冷，夏天的冷空调、电扇等）吗？</li>
+                    <label><input type="radio" name="q4" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q4" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q4" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q4" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q4" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您比别人容易患感冒吗？</li>
+                    <label><input type="radio" name="q5" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q5" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q5" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q5" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q5" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您吃（喝）凉的东西会感到不舒服或者怕吃（喝）凉东西吗？</li>
+                    <label><input type="radio" name="q6" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q6" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q6" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q6" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q6" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您受凉或吃（喝）凉的东西后，容易腹泻（拉肚子）吗？</li>
+                    <label><input type="radio" name="q7" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q7" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q7" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q7" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q7" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">阴虚体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您感到手脚心发热吗？</li>
+                    <label><input type="radio" name="q8" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q8" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q8" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q8" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q8" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您感觉身体、脸上发热吗？</li>
+                    <label><input type="radio" name="q9" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q9" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q9" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q9" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q9" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您皮肤或口唇干吗？</li>
+                    <label><input type="radio" name="q10" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q10" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q10" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q10" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q10" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您口唇的颜色比一般人红吗？</li>
+                    <label><input type="radio" name="q11" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q11" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q11" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q11" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q11" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易便秘或大便干燥吗？</li>
+                    <label><input type="radio" name="q12" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q12" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q12" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q12" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q12" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您面部两颧潮红或偏红吗？</li>
+                    <label><input type="radio" name="q13" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q13" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q13" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q13" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q13" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您感到眼睛干涩吗？</li>
+                    <label><input type="radio" name="q14" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q14" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q14" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q14" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q14" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您感到口干咽燥、总想喝水吗？</li>
+                    <label><input type="radio" name="q15" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q15" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q15" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q15" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q15" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">气虚体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您容易疲乏吗？</li>
+                    <label><input type="radio" name="q16" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q16" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q16" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q16" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q16" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易气短（呼吸短促，接不上气）吗？</li>
+                    <label><input type="radio" name="q17" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q17" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q17" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q17" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q17" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易心慌吗？</li>
+                    <label><input type="radio" name="q18" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q18" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q18" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q18" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q18" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易头晕或站起时晕眩吗？</li>
+                    <label><input type="radio" name="q19" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q19" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q19" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q19" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q19" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您比别人容易患感冒吗？</li>
+                    <label><input type="radio" name="q20" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q20" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q20" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q20" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q20" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您喜欢安静、懒得说话吗？</li>
+                    <label><input type="radio" name="q21" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q21" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q21" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q21" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q21" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您说话声音低弱无力吗？</li>
+                    <label><input type="radio" name="q22" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q22" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q22" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q22" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q22" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您活动量稍大就容易出虚汗吗？</li>
+                    <label><input type="radio" name="q23" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q23" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q23" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q23" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q23" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">痰湿体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您感到胸闷或腹部胀满吗？</li>
+                    <label><input type="radio" name="q24" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q24" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q24" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q24" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q24" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您感到身体沉重不轻松或不爽快吗？</li>
+                    <label><input type="radio" name="q25" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q25" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q25" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q25" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q25" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您腹部肥满松软吗？</li>
+                    <label><input type="radio" name="q26" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q26" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q26" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q26" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q26" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您有额部油脂分泌多的现象吗？</li>
+                    <label><input type="radio" name="q27" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q27" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q27" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q27" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q27" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您上眼睑比别人肿（上眼睑有轻微隆起的现象)吗？</li>
+                    <label><input type="radio" name="q28" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q28" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q28" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q28" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q28" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您嘴里有黏黏的感觉吗？</li>
+                    <label><input type="radio" name="q29" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q29" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q29" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q29" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q29" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您平时痰多，特别是咽喉部总感到有痰堵着吗？</li>
+                    <label><input type="radio" name="q30" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q30" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q30" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q30" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q30" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您舌苔厚腻或有舌苔厚厚的感觉吗？</li>
+                    <label><input type="radio" name="q31" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q31" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q31" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q31" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q31" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">湿热体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您面部或鼻部有油腻感或者油亮发光吗？</li>
+                    <label><input type="radio" name="q32" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q32" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q32" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q32" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q32" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易生座疮或疮疖吗？</li>
+                    <label><input type="radio" name="q33" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q33" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q33" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q33" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q33" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您感到口苦或嘴里有异味吗？</li>
+                    <label><input type="radio" name="q34" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q34" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q34" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q34" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q34" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您大便黏滞不爽、有解不尽的感觉吗？</li>
+                    <label><input type="radio" name="q35" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q35" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q35" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q35" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q35" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您小便时尿道有发热感、尿色浓（深）吗？</li>
+                    <label><input type="radio" name="q36" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q36" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q36" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q36" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q36" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您带下色黄（白带颜色发黄）吗？（限女性回答）</li>
+                    <label><input type="radio" name="q37" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q37" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q37" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q37" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q37" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您的阴囊部位潮湿吗？（限男性回答）</li>
+                    <label><input type="radio" name="q38" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q38" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q38" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q38" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q38" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">瘀血体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您的皮肤在不知不觉中会出现青紫瘀斑（皮下出血）吗？</li>
+                    <label><input type="radio" name="q39" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q39" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q39" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q39" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q39" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您两颧部有细微红丝吗？</li>
+                    <label><input type="radio" name="q40" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q40" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q40" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q40" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q40" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您身体上有哪里疼痛吗？</li>
+                    <label><input type="radio" name="q41" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q41" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q41" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q41" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q41" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您面色晦暗或容易出现褐斑吗？</li>
+                    <label><input type="radio" name="q42" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q42" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q42" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q42" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q42" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易有黑眼圈吗？</li>
+                    <label><input type="radio" name="q43" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q43" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q43" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q43" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q43" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易忘事（健忘）吗？</li>
+                    <label><input type="radio" name="q44" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q44" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q44" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q44" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q44" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您口唇颜色偏暗吗？</li>
+                    <label><input type="radio" name="q45" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q45" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q45" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q45" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q45" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">气郁体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您感到闷闷不乐、情绪低沉吗？</li>
+                    <label><input type="radio" name="q46" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q46" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q46" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q46" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q46" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易精神紧张、焦虑不安吗？</li>
+                    <label><input type="radio" name="q47" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q47" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q47" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q47" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q47" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您多愁善感、感情脆弱吗？</li>
+                    <label><input type="radio" name="q48" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q48" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q48" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q48" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q48" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易感到害怕或受到惊吓吗？</li>
+                    <label><input type="radio" name="q49" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q49" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q49" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q49" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q49" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您胁肋部或乳房胀痛吗？</li>
+                    <label><input type="radio" name="q50" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q50" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q50" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q50" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q50" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您无缘无故叹气吗？</li>
+                    <label><input type="radio" name="q51" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q51" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q51" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q51" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q51" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您咽喉部有异物感，且吐之不出、咽之不下吗？</li>
+                    <label><input type="radio" name="q52" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q52" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q52" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q52" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q52" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">特禀体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您没有感冒时也会打喷嚏吗？</li>
+                    <label><input type="radio" name="q53" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q53" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q53" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q53" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q53" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您没有感冒时也会鼻塞、流鼻涕吗？</li>
+                    <label><input type="radio" name="q54" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q54" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q54" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q54" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q54" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您有因季节变化、温度变化或异味等原因而咳喘的现象吗？</li>
+                    <label><input type="radio" name="q55" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q55" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q55" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q55" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q55" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易过敏（对药物、食物、气味、花粉或在季节交替、气候变化时)吗？</li>
+                    <label><input type="radio" name="q56" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q56" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q56" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q56" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q56" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您的皮肤容易起荨麻疹（风团、风疹块、风疙瘩)吗？</li>
+                    <label><input type="radio" name="q57" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q57" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q57" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q57" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q57" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您的皮肤因过敏出现过紫癜（紫红色瘀点、瘀斑)吗？</li>
+                    <label><input type="radio" name="q58" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q58" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q58" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q58" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q58" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您的皮肤一抓就红，并出现抓痕吗？</li>
+                    <label><input type="radio" name="q59" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q59" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q59" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q59" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q59" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+
+                    <h5 style="font-size: 22px; margin-bottom: 10px;">平和体质</h5>
+                    <h6 style="font-size: 20px; margin-top: 10px; margin-bottom: 15px;">请根据近一年的体验和感觉，回答以下问题：</h6>
+
+                    <li>您精力充沛吗？</li>
+                    <label><input type="radio" name="q60" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q60" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q60" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q60" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q60" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易疲乏吗？</li>
+                    <label><input type="radio" name="q61" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q61" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q61" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q61" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q61" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您说话声音低弱无力吗？</li>
+                    <label><input type="radio" name="q62" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q62" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q62" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q62" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q62" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您感到闷闷不乐、情绪低沉吗？</li>
+                    <label><input type="radio" name="q63" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q63" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q63" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q63" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q63" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您比一般人耐受不了寒冷（冬天的寒冷，夏天的冷空调、电扇等)吗？</li>
+                    <label><input type="radio" name="q64" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q64" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q64" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q64" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q64" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您能适应外界自然和社会环境的变化吗？</li>
+                    <label><input type="radio" name="q65" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q65" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q65" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q65" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q65" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易失眠吗？</li>
+                    <label><input type="radio" name="q66" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q66" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q66" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q66" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q66" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                    <li>您容易忘事（健忘）吗？</li>
+                    <label><input type="radio" name="q67" value="没有（根本不）"> 没有（根本不）</label><br>
+                    <label><input type="radio" name="q67" value="很少（有一点）"> 很少（有一点）</label><br>
+                    <label><input type="radio" name="q67" value="有时（有些）"> 有时（有些）</label><br>
+                    <label><input type="radio" name="q66" value="经常（相当）"> 经常（相当）</label><br>
+                    <label><input type="radio" name="q66" value="总是（非常）"> 总是（非常）</label><br>
+                    <br>
+
+                </div>
+            </ol>
+             <div id="btn">
+                <button type="submit" onclick="download()">提交</button>
+             </div>
+    </div>
+</body>
+
+    <script src="{{ url_for('static', filename='questionnaire.js') }}"></script>
+</html>
+

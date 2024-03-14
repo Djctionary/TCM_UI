@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+
+</head>
+
+<body>
+    <div class="angry-grid">
+        <script id="canvas_nest" defer="defer" color="255,0,255" opacity="0.7" zIndex="-1" count="99" mobile="false"
+            src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-nest.min.js"></script>
+        <script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js"
+            data-mobile="false" data-text="富强,民主,文明,和谐,自由,平等,公正,法治,爱国,敬业,诚信,友善" data-fontsize="15px" data-random="false"
+            async="async"></script>
+        <div id="ID" class="ID">
+            <p>ID</p>
+            <input type="text" id="myInput">
+        </div>
+
+        <div id="面部识别" class="面部识别" style="display: flex; flex-direction: column; height: 100%;">
+            <p>面部识别</p>
+            <img src="{{ url_for('static', filename='icon.png') }}" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        </div>
+        <div id="舌相抓取" class="舌相抓取" style="display: flex; flex-direction: column; height: 100%;">
+
+            <p>舌相抓取</p>
+            <img src="{{ url_for('static', filename='icon.png') }}" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        </div>
+        <div id="步态记录" class="步态记录" style="display: flex; flex-direction: column; height: 100%;">
+            <p>步态记录</p>
+            <img src="{{ url_for('static', filename='icon.png') }}" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        </div>
+        <div id="患者自述" class="患者自述" style="display: flex; flex-direction: column; height: 100%;">
+
+            <p>患者自述</p>
+            <img src="{{ url_for('static', filename='icon.png') }}" alt="开始录制" style="max-width: 100%; max-height: 100%; width: 10em; margin-bottom: 10px;">
+        </div>
+
+        <button id="文字转录" class="文字转录">
+            文字转录
+        </button>
+        <div id="结果记录" class="结果记录">
+            <p>结果记录</p>
+        </div>
+        <div class="text-display" id="Text">
+            Display Text Here
+        </div>
+        <button id="问卷1" class="问卷1">
+            <p>问卷1</p>
+        </button>
+        <button id="问卷2" class="问卷2">
+            <p>问卷2</p>
+        </button>
+        <button id="问卷3" class="问卷3">
+            <p>问卷3</p>
+        </button>
+        <button id="问卷4" class="问卷4">
+            <p>问卷4</p>
+        </button>
+       <button id="保存" class="保存">
+            保存
+        </button>
+        <button id="GUI" class="GUI">
+            GUI
+        </button>
+        <div id="重置" class="重置">
+            重置
+        </div>
+        <div class="g-progress" style="--progress: 0%" id="bar"></div>
+    </div>
+
+    <!-- 缩略图容器 -->
+    <div class="thumbnail-container">
+    <!-- 缩略图 -->
+    <img id="可视化图片" style="display: None;" class="thumbnail" src="static/visual_wav.jpg" onclick="openModal('static/visual_wav.jpg?v=')">
+    </div>
+
+    <!-- 放大后的容器 -->
+    <div id="myModal" class="modal">
+        <!-- 放大后的图像 -->
+        <img id="modalImg" alt="Enlarged Image">
+    </div>
+
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+
+</body>
+
+</html>
